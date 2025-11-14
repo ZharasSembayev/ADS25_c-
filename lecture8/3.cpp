@@ -7,7 +7,7 @@ vector<int> get_hash(string s){
     vector<int> h(n);
     h[0] = s[0];
     int p = 29;
-    int p_pow = 1;
+    int p_pow = 29;
     for(int i=1; i<n; i++){
         h[i] = h[i-1] + s[i] * p_pow;
         p_pow *= p;
@@ -16,19 +16,18 @@ vector<int> get_hash(string s){
 }
 
 vector<int> get_powers(int n){
-    int p = 29;
     vector<int> pw(n);
     pw[0] = 1;
     for(int i=1; i<n; i++){
-        pw[i] = pw[i-1] * p;
+        pw[i] = pw[i-1] * 29;
     }
     return pw;
 }
 
-int substring_hash(vector<int>& h, vector<int>& pw, int l, int r){
+int substring(vecot<int>& h, vector<int>& pw, int l, int r){
     int hash = h[r];
     if(l>0){
-        hash -= h[l-1];
+        hash = hash - h[l-1];
     }
     return hash;
 }
